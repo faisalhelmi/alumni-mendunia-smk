@@ -12,25 +12,36 @@
 ══════════════════════════════════════════════ */
 
 :root {
-  --blue:        #1a56c4;
-  --blue-dark:   #0f3a8a;
-  --blue-light:  #e8f0fe;
-  --blue-mid:    #c7d9f9;
-  --green:       #1a7a4a;
-  --green-light: #d4f0e2;
+  /* ── Warna utama: Oranye ── */
+  --blue:        #e8650a;
+  --blue-dark:   #a84100;
+  --blue-light:  #fff0e6;
+  --blue-mid:    #ffd4b0;
+
+  /* ── Status positif: Hijau teal (kontras dengan oranye) ── */
+  --green:       #0d7a5f;
+  --green-light: #d0f5ec;
+
+  /* ── Status negatif: Merah (tetap) ── */
   --red:         #c0392b;
   --red-light:   #fde8e8;
-  --yellow:      #b45309;
-  --yellow-bg:   #fef3c7;
+
+  /* ── Status netral/menunggu: Biru-ungu (kontras dengan oranye) ── */
+  --yellow:      #5b4fcf;
+  --yellow-bg:   #ede9fc;
+
+  /* ── Emas aksen ── */
   --gold:        #FFD700;
-  --bg:          #f1f5fb;
+
+  /* ── Background & surface: nuansa krem hangat ── */
+  --bg:          #fdf6f0;
   --surface:     #ffffff;
-  --text:        #1a2332;
-  --muted:       #5c6e84;
-  --border:      #cdd8eb;
+  --text:        #2c1a0e;
+  --muted:       #8a6650;
+  --border:      #f0d4bc;
   --radius:      16px;
-  --shadow:      0 4px 24px rgba(26,86,196,0.10);
-  --shadow-lg:   0 8px 40px rgba(26,86,196,0.16);
+  --shadow:      0 4px 24px rgba(168,65,0,0.10);
+  --shadow-lg:   0 8px 40px rgba(168,65,0,0.16);
 }
 
 *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -50,7 +61,7 @@ body {
    HOME / LOGIN PAGE
 ══════════════════════════════════════════════ */
 #page-home {
-  background: linear-gradient(160deg, #0a2558 0%, #0f3a8a 45%, #1a56c4 100%);
+  background: linear-gradient(160deg, #7a2d00 0%, #a84100 45%, #e8650a 100%);
   align-items: center;
   justify-content: center;
   padding: 32px 20px;
@@ -144,7 +155,7 @@ body {
   margin-top: 20px;
   padding: 16px;
   background: var(--gold);
-  color: #0a2558;
+  color: #7a2d00;
   border: none;
   border-radius: 12px;
   font-family: 'Nunito', sans-serif;
@@ -167,7 +178,7 @@ body {
 #page-dashboard { background: var(--bg); }
 
 .school-header {
-  background: linear-gradient(135deg, #0a2558 0%, #0f3a8a 60%, #1a56c4 100%);
+  background: linear-gradient(135deg, #7a2d00 0%, #a84100 60%, #e8650a 100%);
   padding: 20px 24px;
   display: flex;
   align-items: center;
@@ -275,7 +286,7 @@ body {
   margin-bottom: 10px;
   border: 1.5px solid var(--border);
   gap: 14px;
-  box-shadow: 0 2px 8px rgba(26,86,196,0.05);
+  box-shadow: 0 2px 8px rgba(232,101,10,0.05);
 }
 
 .class-badge {
@@ -394,12 +405,12 @@ body {
   text-align: center;
   outline: none;
   transition: border-color 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 10px rgba(26,86,196,0.06);
+  box-shadow: 0 2px 10px rgba(232,101,10,0.06);
   margin-bottom: 8px;
 }
 .input-hero:focus {
   border-color: var(--blue);
-  box-shadow: 0 0 0 4px rgba(26,86,196,0.12), 0 2px 10px rgba(26,86,196,0.08);
+  box-shadow: 0 0 0 4px rgba(232,101,10,0.12), 0 2px 10px rgba(232,101,10,0.08);
 }
 .input-hero.date-input { font-size: 1.1rem; text-align: left; }
 
@@ -420,10 +431,10 @@ body {
   font-family: 'Nunito', sans-serif;
   font-size: 1.1rem; font-weight: 800;
   cursor: pointer;
-  box-shadow: 0 4px 18px rgba(26,86,196,0.32);
+  box-shadow: 0 4px 18px rgba(232,101,10,0.32);
   transition: all 0.18s; letter-spacing: 0.2px;
 }
-.btn-lanjut:hover { background: var(--blue-dark); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(26,86,196,0.4); }
+.btn-lanjut:hover { background: var(--blue-dark); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(232,101,10,0.4); }
 
 .big-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; width: 100%; margin-bottom: 12px; }
 .big-choice {
@@ -433,7 +444,9 @@ body {
   background: var(--surface); cursor: pointer; font-family: 'Nunito', sans-serif;
   transition: all 0.18s;
 }
-.big-choice:hover, .big-choice.selected { border-color: var(--blue); background: var(--blue-light); transform: translateY(-2px); }
+.big-choice:hover, .big-choice.selected { border-color: var(--blue); background: var(--blue-light); color: var(--blue-dark); transform: translateY(-2px); box-shadow: 0 4px 14px rgba(232,101,10,0.18); }
+.big-choice.selected .bc-num { color: var(--blue); }
+.big-choice.selected .bc-label { color: var(--blue-dark); }
 .bc-num { font-size: 1.8rem; font-weight: 900; color: var(--blue-dark); }
 .bc-label { font-size: 0.8rem; font-weight: 700; color: var(--muted); }
 
@@ -447,8 +460,8 @@ body {
   transition: all 0.18s;
 }
 .yn-icon { font-size: 2.4rem; }
-.yn-yes:hover, .yn-yes.selected { border-color: var(--green); background: var(--green-light); transform: translateY(-2px); }
-.yn-no:hover,  .yn-no.selected  { border-color: var(--red);   background: var(--red-light);   transform: translateY(-2px); }
+.yn-yes:hover, .yn-yes.selected { border-color: var(--green); background: var(--green-light); color: var(--green); transform: translateY(-2px); }
+.yn-no:hover,  .yn-no.selected  { border-color: var(--red);   background: var(--red-light);   color: var(--red);   transform: translateY(-2px); }
 
 .country-pills { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 20px; width: 100%; }
 .pill {
@@ -475,8 +488,8 @@ body {
 .rev-label { font-size: 0.77rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; min-width: 110px; flex-shrink: 0; padding-top: 2px; }
 .rev-value { font-size: 0.95rem; font-weight: 800; color: var(--text); }
 .rev-badge { display: inline-block; padding: 3px 12px; border-radius: 20px; font-size: 0.82rem; font-weight: 800; }
-.rev-ok { background: var(--green-light); color: var(--green); }
-.rev-no { background: var(--yellow-bg); color: var(--yellow); }
+.rev-ok { background: var(--green-light); color: var(--green); font-weight: 800; border-radius: 6px; padding: 2px 10px; }
+.rev-no { background: var(--yellow-bg); color: var(--yellow); font-weight: 800; border-radius: 6px; padding: 2px 10px; }
 
 .review-actions { display: flex; gap: 12px; width: 100%; }
 .btn-edit-back {
@@ -492,14 +505,14 @@ body {
   background: var(--green); color: white;
   border: none; border-radius: 12px;
   font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 800;
-  cursor: pointer; box-shadow: 0 4px 16px rgba(26,122,74,0.3);
+  cursor: pointer; box-shadow: 0 4px 16px rgba(13,122,95,0.3);
   transition: all 0.18s;
 }
-.btn-simpan:hover { background: #155a37; transform: translateY(-1px); }
+.btn-simpan:hover { background: #085c47; transform: translateY(-1px); }
 
 /* ══ SUCCESS ═════════════════════════════════ */
 #page-success {
-  background: linear-gradient(160deg, #0a2558, #1a7a4a);
+  background: linear-gradient(160deg, #7a2d00, #e8650a);
   align-items: center; justify-content: center;
   text-align: center; padding: 40px 24px;
 }
@@ -525,7 +538,7 @@ body {
   padding: 16px 24px;
   background: var(--surface); border-bottom: 1.5px solid var(--border);
   position: sticky; top: 0; z-index: 10;
-  box-shadow: 0 2px 10px rgba(26,86,196,0.07);
+  box-shadow: 0 2px 10px rgba(232,101,10,0.07);
 }
 .subpage-header h2 { font-size: 1.05rem; font-weight: 900; }
 .subpage-school-tag {
@@ -577,7 +590,7 @@ thead th {
   padding: 12px 14px; text-align: left;
   font-weight: 800; white-space: nowrap; font-size: 0.78rem; letter-spacing: 0.3px;
 }
-tbody tr:nth-child(even) { background: #f8fafd; }
+tbody tr:nth-child(even) { background: #fdf6f0; }
 tbody tr:hover { background: var(--blue-light); }
 tbody td { padding: 11px 14px; border-bottom: 1px solid var(--border); vertical-align: middle; }
 
@@ -607,7 +620,7 @@ tbody td { padding: 11px 14px; border-bottom: 1px solid var(--border); vertical-
 .exp-ico { font-size: 2.5rem; margin-bottom: 12px; }
 .exp-card h3 { font-size: 1rem; font-weight: 800; margin-bottom: 8px; }
 .exp-card p { font-size: 0.84rem; color: var(--muted); margin-bottom: 20px; line-height: 1.5; }
-.btn-exp { width: 100%; padding: 13px; background: var(--blue); color: white; border: none; border-radius: 10px; font-family: 'Nunito', sans-serif; font-size: 0.92rem; font-weight: 800; cursor: pointer; transition: all 0.18s; box-shadow: 0 3px 12px rgba(26,86,196,0.25); }
+.btn-exp { width: 100%; padding: 13px; background: var(--blue); color: white; border: none; border-radius: 10px; font-family: 'Nunito', sans-serif; font-size: 0.92rem; font-weight: 800; cursor: pointer; transition: all 0.18s; box-shadow: 0 3px 12px rgba(232,101,10,0.25); }
 .btn-exp:hover { background: var(--blue-dark); transform: translateY(-1px); }
 .btn-del { background: var(--red); box-shadow: 0 3px 12px rgba(192,57,43,0.25); }
 .btn-del:hover { background: #9b2335; }
