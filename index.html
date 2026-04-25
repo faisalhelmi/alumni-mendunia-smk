@@ -733,13 +733,8 @@ tbody td { padding: 11px 14px; border-bottom: 1px solid var(--border); vertical-
 
     <div class="step" data-step="1">
       <div class="step-emoji">👤</div>
-      <h2 class="step-question">Data identitas alumni?</h2>
-      <p class="step-sub">NIK sesuai KTP, nama sesuai ijazah atau kartu identitas</p>
-      <label style="display:block;font-size:0.82rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">NIK Alumni</label>
-      <input type="text" id="f-nik" class="input-hero" placeholder="16 digit NIK alumni..."
-        maxlength="16" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')"
-        style="margin-bottom:16px;" onkeydown="if(event.key==='Enter') document.getElementById('f-murid').focus()" />
-      <div class="field-error" id="err-nik">⚠ NIK alumni wajib diisi (16 digit)</div>
+      <h2 class="step-question">Nama lengkap alumni?</h2>
+      <p class="step-sub">Tulis nama sesuai ijazah atau kartu identitas</p>
       <label style="display:block;font-size:0.82rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Nama Lengkap Alumni</label>
       <input type="text" id="f-murid" class="input-hero" placeholder="Tulis nama lengkap alumni..."
         onkeydown="enterNext(event,1)" />
@@ -858,10 +853,31 @@ tbody td { padding: 11px 14px; border-bottom: 1px solid var(--border); vertical-
           <span class="bc-num">2025</span><span class="bc-label">Tahun 2025</span>
         </button>
         <button class="big-choice" data-field="tahunBerangkat" data-val="2026" onclick="selectBig('tahunBerangkat','2026',this); nextStep(7)">
-          <span class="bc-num">2026</span><span class="bc-label">Tahun 2026</span>
+          <span class="bc-num">2026</span><span class="bc-label">Tahun 2026 🗓</span>
         </button>
       </div>
       <div class="field-error" id="err-tahunBerangkat">⚠ Pilih tahun keberangkatan</div>
+    </div>
+
+    <div class="step" data-step="7b">
+      <div class="step-emoji">📅</div>
+      <h2 class="step-question">Bulan keberangkatan 2026?</h2>
+      <p class="step-sub">Pilih bulan keberangkatan alumni ini</p>
+      <div class="big-choices" style="grid-template-columns: repeat(3, 1fr);">
+        <button class="big-choice" data-field="bulanBerangkat" data-val="Januari"   onclick="selectBig('bulanBerangkat','Januari',this); nextStep('7b')"><span class="bc-num" style="font-size:1rem">Jan</span><span class="bc-label">Januari</span></button>
+        <button class="big-choice" data-field="bulanBerangkat" data-val="Februari"  onclick="selectBig('bulanBerangkat','Februari',this); nextStep('7b')"><span class="bc-num" style="font-size:1rem">Feb</span><span class="bc-label">Februari</span></button>
+        <button class="big-choice" data-field="bulanBerangkat" data-val="Maret"     onclick="selectBig('bulanBerangkat','Maret',this); nextStep('7b')"><span class="bc-num" style="font-size:1rem">Mar</span><span class="bc-label">Maret</span></button>
+        <button class="big-choice" data-field="bulanBerangkat" data-val="April"     onclick="selectBig('bulanBerangkat','April',this); nextStep('7b')"><span class="bc-num" style="font-size:1rem">Apr</span><span class="bc-label">April</span></button>
+        <button class="big-choice" data-field="bulanBerangkat" data-val="Mei"       onclick="selectBig('bulanBerangkat','Mei',this); nextStep('7b')"><span class="bc-num" style="font-size:1rem">Mei</span><span class="bc-label">Mei</span></button>
+        <button class="big-choice" data-field="bulanBerangkat" data-val="Juni"      onclick="selectBig('bulanBerangkat','Juni',this); nextStep('7b')"><span class="bc-num" style="font-size:1rem">Jun</span><span class="bc-label">Juni</span></button>
+        <button class="big-choice" data-field="bulanBerangkat" data-val="Juli"      onclick="selectBig('bulanBerangkat','Juli',this); nextStep('7b')"><span class="bc-num" style="font-size:1rem">Jul</span><span class="bc-label">Juli</span></button>
+        <button class="big-choice" data-field="bulanBerangkat" data-val="Agustus"   onclick="selectBig('bulanBerangkat','Agustus',this); nextStep('7b')"><span class="bc-num" style="font-size:1rem">Agu</span><span class="bc-label">Agustus</span></button>
+        <button class="big-choice" data-field="bulanBerangkat" data-val="September" onclick="selectBig('bulanBerangkat','September',this); nextStep('7b')"><span class="bc-num" style="font-size:1rem">Sep</span><span class="bc-label">September</span></button>
+        <button class="big-choice" data-field="bulanBerangkat" data-val="Oktober"   onclick="selectBig('bulanBerangkat','Oktober',this); nextStep('7b')"><span class="bc-num" style="font-size:1rem">Okt</span><span class="bc-label">Oktober</span></button>
+        <button class="big-choice" data-field="bulanBerangkat" data-val="November"  onclick="selectBig('bulanBerangkat','November',this); nextStep('7b')"><span class="bc-num" style="font-size:1rem">Nov</span><span class="bc-label">November</span></button>
+        <button class="big-choice" data-field="bulanBerangkat" data-val="Desember"  onclick="selectBig('bulanBerangkat','Desember',this); nextStep('7b')"><span class="bc-num" style="font-size:1rem">Des</span><span class="bc-label">Desember</span></button>
+      </div>
+      <div class="field-error" id="err-bulanBerangkat">⚠ Pilih bulan keberangkatan</div>
     </div>
 
     <div class="step" data-step="8">
@@ -1121,14 +1137,17 @@ function renderDashboard() {
 
 // ══ WIZARD ══════════════════════════════════════
 function getStepSequence() {
-  return [1, 2, 3, 4, 5, 6, 7, 8];
+  const seq = [1, 2, 3, 4, 5, 6, 7];
+  if (selections.tahunBerangkat === '2026') seq.push('7b');
+  seq.push(8);
+  return seq;
 }
 
 function startWizard() {
   if (!activeSchool) { goPage('page-home'); return; }
   currentStep = 1;
   selections = {};
-  ['f-nik', 'f-murid', 'f-konsentrasi', 'f-negara']
+  ['f-murid', 'f-konsentrasi', 'f-negara']
     .forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
   document.querySelectorAll('.big-choice, .yn-btn, .pill').forEach(el => el.classList.remove('selected'));
   document.querySelectorAll('.field-error').forEach(el => el.classList.remove('show'));
@@ -1161,6 +1180,11 @@ function showStep(step) {
   backBtn.style.visibility = idx === 0 ? 'hidden' : 'visible';
 
   if (step === 8) buildReview();
+  if (step === 7) {
+    // reset bulan if user comes back to year step
+    selections.bulanBerangkat = undefined;
+    document.querySelectorAll('[data-field="bulanBerangkat"]').forEach(b => b.classList.remove('selected'));
+  }
 
   setTimeout(() => {
     const input = el && el.querySelector('input');
@@ -1170,6 +1194,7 @@ function showStep(step) {
 
 function nextStep(fromStep) {
   if (!validateStep(fromStep)) return;
+  // Rebuild sequence after step 7 so 7b is included/excluded correctly
   const seq = getStepSequence();
   const idx = seq.indexOf(fromStep);
   if (idx < seq.length - 1) {
@@ -1203,15 +1228,15 @@ function fVal(id) { return (document.getElementById(id)?.value || '').trim(); }
 function validateStep(step) {
   switch (step) {
     case 1:
-      if (!/^\d{16}$/.test(fVal('f-nik'))) { showErr('err-nik'); return false; }
-      if (!fVal('f-murid'))                 { showErr('err-murid'); return false; }
+      if (!fVal('f-murid')) { showErr('err-murid'); return false; }
       break;
-    case 2: if (!fVal('f-konsentrasi'))      { showErr('err-konsentrasi');   return false; } break;
-    case 3: if (!selections.kelas)           { showErr('err-kelas');         return false; } break;
-    case 4: if (!selections.kjp)             { showErr('err-kjp');           return false; } break;
-    case 5: if (!fVal('f-negara'))           { showErr('err-negara');        return false; } break;
-    case 6: if (!selections.statusKerja)     { showErr('err-statusKerja');   return false; } break;
-    case 7: if (!selections.tahunBerangkat)  { showErr('err-tahunBerangkat');return false; } break;
+    case 2:    if (!fVal('f-konsentrasi'))       { showErr('err-konsentrasi');    return false; } break;
+    case 3:    if (!selections.kelas)            { showErr('err-kelas');          return false; } break;
+    case 4:    if (!selections.kjp)              { showErr('err-kjp');            return false; } break;
+    case 5:    if (!fVal('f-negara'))            { showErr('err-negara');         return false; } break;
+    case 6:    if (!selections.statusKerja)      { showErr('err-statusKerja');    return false; } break;
+    case 7:    if (!selections.tahunBerangkat)   { showErr('err-tahunBerangkat'); return false; } break;
+    case '7b': if (!selections.bulanBerangkat)   { showErr('err-bulanBerangkat'); return false; } break;
   }
   return true;
 }
@@ -1229,26 +1254,28 @@ function setPill(inputId, value, btn) {
 }
 
 function buildReview() {
+  const keberangkatan = selections.tahunBerangkat === '2026' && selections.bulanBerangkat
+    ? `${selections.bulanBerangkat} 2026`
+    : (selections.tahunBerangkat || '—');
+
   const rows = [
-    ['🏫 NPSN',              activeSchool?.npsn || '—'],
-    ['🏛️ Sekolah',           activeSchool?.namaSekolah || '—'],
-    ['🪪 NIK Alumni',        fVal('f-nik')],
-    ['👤 Nama Alumni',       fVal('f-murid')],
-    ['🔧 Konsentrasi',       fVal('f-konsentrasi')],
-    ['📅 Tahun Lulus',       selections.kelas || '—'],
-    ['💳 Penerima KJP',      selections.kjp || '—'],
-    ['✈️ Negara Bekerja',    fVal('f-negara') || '—'],
-    ['💼 Status Kerja',      selections.statusKerja || '—'],
-    ['🗓️ Tahun Keberangkatan', selections.tahunBerangkat || '—'],
+    ['🏫 NPSN',                activeSchool?.npsn || '—'],
+    ['🏛️ Sekolah',             activeSchool?.namaSekolah || '—'],
+    ['👤 Nama Alumni',         fVal('f-murid')],
+    ['🔧 Konsentrasi',         fVal('f-konsentrasi')],
+    ['📅 Tahun Lulus',         selections.kelas || '—'],
+    ['💳 Penerima KJP',        selections.kjp || '—'],
+    ['✈️ Negara Bekerja',      fVal('f-negara') || '—'],
+    ['💼 Status Kerja',        selections.statusKerja || '—'],
+    ['🗓️ Keberangkatan',       keberangkatan],
   ];
 
   document.getElementById('reviewCard').innerHTML = rows.map(([label, value]) => {
     let display = esc(value);
-    if (value === 'Ya') display = `<span class="rev-badge rev-ok">✅ Ya</span>`;
-    else if (value === 'Tidak') display = `<span class="rev-badge rev-no">❌ Tidak</span>`;
-    else if (value === 'Magang') display = `<span class="rev-badge rev-ok">🎓 Magang</span>`;
+    if (value === 'Ya')           display = `<span class="rev-badge rev-ok">✅ Ya</span>`;
+    else if (value === 'Tidak')   display = `<span class="rev-badge rev-no">❌ Tidak</span>`;
+    else if (value === 'Magang')  display = `<span class="rev-badge rev-ok">🎓 Magang</span>`;
     else if (value === 'Bekerja Penuh') display = `<span class="rev-badge rev-ok">👔 Bekerja Penuh</span>`;
-    else if (value === 'Tidak diisi') display = `<span style="color:#aaa;font-style:italic">Tidak diisi</span>`;
     return `<div class="review-row"><span class="rev-label">${label}</span><span class="rev-value">${display}</span></div>`;
   }).join('');
 }
@@ -1259,7 +1286,6 @@ function submitData() {
     timestamp: new Date().toISOString(),
     npsn: activeSchool.npsn,
     namaSekolah: activeSchool.namaSekolah,
-    nikSiswa: fVal('f-nik'),
     namaMurid: fVal('f-murid'),
     konsentrasi: fVal('f-konsentrasi'),
     kelas: selections.kelas,
@@ -1267,6 +1293,7 @@ function submitData() {
     negaraBekerja: fVal('f-negara'),
     statusKerja: selections.statusKerja,
     tahunBerangkat: selections.tahunBerangkat,
+    bulanBerangkat: selections.tahunBerangkat === '2026' ? (selections.bulanBerangkat || '') : '',
   };
 
   addStudent(record);
@@ -1318,13 +1345,12 @@ function renderTable() {
       return `
         <tr>
           <td>${rowNum}</td>
-          <td>${esc(r.nikSiswa || '—')}</td>
           <td><strong>${esc(r.namaMurid)}</strong></td>
           <td>${esc(r.konsentrasi)}</td>
           <td><span class="badge-${r.statusKjp === 'Ya' ? 'ok' : 'wait'}">${esc(r.statusKjp || '—')}</span></td>
           <td>${esc(r.negaraBekerja || '—')}</td>
           <td><span class="badge-${r.statusKerja === 'Bekerja Penuh' ? 'ok' : 'wait'}">${esc(r.statusKerja || '—')}</span></td>
-          <td>${esc(r.tahunBerangkat || '—')}</td>
+          <td>${r.bulanBerangkat ? esc(r.bulanBerangkat + ' ' + r.tahunBerangkat) : esc(r.tahunBerangkat || '—')}</td>
           <td><button class="btn-del-row" onclick="deleteRow('${r.id}')">🗑 Hapus</button></td>
         </tr>`;
     }).join('');
@@ -1339,9 +1365,9 @@ function renderTable() {
           <table>
             <thead>
               <tr>
-                <th>No</th><th>NIK Alumni</th><th>Nama Alumni</th><th>Konsentrasi</th>
+                <th>No</th><th>Nama Alumni</th><th>Konsentrasi</th>
                 <th>KJP</th><th>Negara Bekerja</th><th>Status Kerja</th>
-                <th>Thn Berangkat</th><th></th>
+                <th>Keberangkatan</th><th></th>
               </tr>
             </thead>
             <tbody>${tableRows}</tbody>
@@ -1386,14 +1412,14 @@ function exportCSV() {
   const students = getStudentsBySchool(activeSchool.npsn);
   if (!students.length) { toast('Tidak ada data untuk diexport.', 'err'); return; }
 
-  const headers = ['No', 'NPSN', 'Nama Sekolah', 'NIK Murid', 'Nama Murid', 'Konsentrasi Keahlian',
-    'Kelas', 'Status KJP', 'Sudah Pelatihan LN', 'Nama Fasilitator',
-    'Sudah Mendapat Penempatan', 'Negara Penempatan', 'Tanggal Penempatan', 'Timestamp'];
+  const headers = ['No', 'NPSN', 'Nama Sekolah', 'Nama Alumni', 'Konsentrasi Keahlian',
+    'Tahun Lulus', 'Status KJP', 'Negara Bekerja', 'Status Kerja',
+    'Tahun Keberangkatan', 'Bulan Keberangkatan', 'Timestamp'];
 
   const rows = students.map((s, i) => [
-    i + 1, s.npsn, s.namaSekolah, s.nikSiswa || '', s.namaMurid, s.konsentrasi, s.kelas,
-    s.statusKjp || '', s.sudahPelatihan, s.namaFasilitator || '',
-    s.sudahPenempatan, s.negaraPenempatan || '', s.tanggalPenempatan || '', s.timestamp
+    i + 1, s.npsn, s.namaSekolah, s.namaMurid, s.konsentrasi, s.kelas,
+    s.statusKjp || '', s.negaraBekerja || '', s.statusKerja || '',
+    s.tahunBerangkat || '', s.bulanBerangkat || '', s.timestamp
   ]);
 
   const csv = [headers, ...rows].map(row =>
